@@ -3,8 +3,8 @@ import board
 from adafruit_pca9685 import PCA9685
 
 # --- SETTINGS (Change these to match your board's wiring) ---
-ESC_PIN = 12
-SERVO_PIN = 3
+ESC_PIN = 3
+SERVO_PIN = 12
 # ------------------------------------------------------------
 
 # 1. Connect to the PCA9685 board
