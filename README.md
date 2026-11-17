@@ -1,3 +1,4 @@
-﻿# Donkey Racers X! (Team 5)
+# Donkey Racers X! (Team 5)
+## For IEEE at UCLA (2026-2027)
 
-Welcome! Labs are released here progressively throughout the year, right after each lecture. Check back after each session, or watch this repo on GitHub for updates.
+This is the repository for our donkey car project. Our project's goal is building a self-driving vehicle that can navigate obstacles using machine learning based on data from an infrared camera to arrive at a particular destination.
