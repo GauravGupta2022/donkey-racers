@@ -18,6 +18,29 @@ def set_pulse(pin, pulse_ms):
     # We calculate the pulse length as a fraction of the 20ms period.
     pca.channels[pin].duty_cycle = int((pulse_ms / 20.0) * 65535)
 
+def enter_backward_mode():
+    # 1. Neutral
+    set_pulse(ESC_PIN, 1.5)
+    time.sleep(1)
+
+    # 2. Pulse between 1 and 1.5 ms (brake/reverse side)
+    set_pulse(ESC_PIN, 1.4)
+    time.sleep(1)
+
+    # 3. Neutral again
+    set_pulse(ESC_PIN, 1.5)
+    time.sleep(1)
+
+def enter_forward_mode():
+    set_pulse(ESC_PIN, 1.5)
+    time.sleep(1)
+    set_pulse(ESC_PIN, 1.7) # Pulse between 1.5 and 2 ms (returning to forward mode)
+    time.sleep(1)
+    set_pulse(ESC_PIN, 1.5)
+    time.sleep(1)
+
+
+
 try:
     print("Holding neutral for 3 seconds to arm the ESC...")
     set_pulse(ESC_PIN, 1.5)   # 1.5ms is neutral/stop
@@ -35,6 +58,18 @@ try:
     print("Testing throttle (make sure wheels are off the ground!)...")
     set_pulse(ESC_PIN, 1.6)   # Gentle forward throttle
     time.sleep(2)
+
+    #extra credit portion
+    print("Entering backward mode")
+    enter_backward_mode()
+    set_pulse(ESC_PIN, 1.2) #moves car backward
+    time.sleep(2) 
+
+    print("Entering forward mode again")
+    enter_forward_mode()
+    set_pulse(ESC_PIN, 1.7) #moves car forward
+    time.sleep(2) 
+
     
 finally:
     # This block ALWAYS runs, even if the code crashes or you hit Ctrl+C
